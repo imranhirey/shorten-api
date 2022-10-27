@@ -20,7 +20,7 @@ app.get('/:id',(req,res)=>{
         else{
             // update the visited field
             await Shortenedurls.updateOne({shortenedurl:'bu.up.railway.app/'+req.params.id},{$inc:{visited:1}})
-            res.send(data.originalurl);
+            res.redirect(data.originalurl);
         }
     })
 })
