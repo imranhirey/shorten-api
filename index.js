@@ -30,6 +30,7 @@ app.post('/shorten',async(req,res)=>{
     // check if url is already in database
     // if yes then return the shortened url
     // if no then create a new shortened url and return it
+    console.log('waa lii imaadayeee')
     let isavailable=await Shortenedurls.findOne({originalurl:url});
     if (isavailable){
         res.json({
