@@ -33,11 +33,13 @@ app.post('/shorten',async(req,res)=>{
     console.log('waa lii imaadayeee')
     let isavailable=await Shortenedurls.findOne({originalurl:url});
     if (isavailable){
+        
         res.json({
             originalurl:isavailable.originalurl,
             shortenedurl:isavailable.shortenedurl,
             visited:isavailable.visited,
-            created:isavailable.created
+            created:isavailable.created,
+            msg:'from hore'
         })
     }
     else{
@@ -54,7 +56,8 @@ app.post('/shorten',async(req,res)=>{
             originalurl:newurl.originalurl,
             shortenedurl:newurl.shortenedurl,
             visited:newurl.visited,
-            created:newurl.created
+            created:newurl.created,
+             msg:'from dambe'
         })
     }
     
