@@ -13,13 +13,13 @@ app.use(cors({
 connect()
 app.use(bodyParser.json());
 app.get('/:id',(req,res)=>{
-    Shortenedurls.findOne({shortenedurl:'localhost/'+req.params.id},async(err,data)=>{
+    Shortenedurls.findOne({shortenedurl:'bu.up.railway.app/'+req.params.id},async(err,data)=>{
         if(err){
             res.send(err);
         }
         else{
             // update the visited field
-            await Shortenedurls.updateOne({shortenedurl:'localhost/'+req.params.id},{$inc:{visited:1}})
+            await Shortenedurls.updateOne({shortenedurl:'bu.up.railway.app/'+req.params.id},{$inc:{visited:1}})
             res.redirect(data?.originalurl);
         }
     })
@@ -42,7 +42,7 @@ app.post('/shorten',async(req,res)=>{
     }
     else{
         let shortenedurl=Math.random().toString(36).substr(2,5);
-        let urlka= 'localhost/'+shortenedurl;
+        let urlka= 'bu.up.railway.app/'+shortenedurl;
         let newurl=new Shortenedurls({
             originalurl:url,
             shortenedurl:urlka,
