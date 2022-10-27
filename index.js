@@ -20,7 +20,7 @@ app.get('/:id',(req,res)=>{
         else{
             // update the visited field
             await Shortenedurls.updateOne({shortenedurl:'localhost/'+req.params.id},{$inc:{visited:1}})
-            res.redirect(data.originalurl);
+            res.redirect(data?.originalurl);
         }
     })
 })
